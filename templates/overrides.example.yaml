@@ -1,0 +1,83 @@
+# overrides.yaml — your judgements, and the reason for each one
+#
+# This file is the whole point of the kit. The GEDCOM says what your tree
+# *claims*. This file says what you have actually *proven*, and why.
+#
+# THE RULE: a score without a `basis` is just an opinion with a number on
+# it. Every entry here should be answerable to the question "says who?"
+#
+# Generated reports are rebuilt from (GEDCOM + this file). Never hand-edit a
+# generated report — change the number here, next to its reason, and
+# regenerate. That is what makes a multi-year project survive its own
+# history.
+
+# --------------------------------------------------------------------------
+# Who the tree is centred on. Every CHAIN score is measured back to this
+# person. Use their GEDCOM xref -- your agent can find it for you.
+# --------------------------------------------------------------------------
+root: "@I1@"
+root_name: Your Name Here
+
+# --------------------------------------------------------------------------
+# What a join scores when nobody has judged it yet.
+#
+# 10 is the mechanical default for "nobody has looked." It is deliberately
+# NOT 0 -- 0 is reserved for a join a human examined and found nothing
+# behind. Keeping those apart is what stops "unexamined" quietly becoming
+# "disproven."
+# --------------------------------------------------------------------------
+defaults:
+  unsourced_join: 10
+  cited_join: 50
+
+# --------------------------------------------------------------------------
+# LINK scores — is the join from this person to their child documented?
+#
+# Tiers: 99 / 90 / 75 / 50 / 25 / 10 / 0. See CLAUDE.md for what each one
+# requires. The three most common mistakes:
+#
+#   * Scoring 90 on a death certificate's parent fields. The certificate is
+#     primary for the DEATH; its parent fields are secondary, because the
+#     informant wasn't at the birth.
+#   * Scoring 99 on two census years. Two censuses are only semi-independent
+#     -- same family, same informant, same household knowledge.
+#   * Scoring above 75 on any census at all. A census says where someone
+#     lived. Before 1880 it doesn't even say they're related.
+# --------------------------------------------------------------------------
+link:
+  "@I2@":
+    name: Example Parent
+    score: 99
+    basis: >-
+      Living memory, first-hand. I knew this person. Note that no RECORD
+      documents this join -- which is fine for a generation you witnessed,
+      and is worth being honest about rather than pretending a document
+      exists.
+
+  "@I4@":
+    name: Example Grandparent
+    score: 75
+    basis: >-
+      1900, 1910 and 1920 censuses all place the child in this household at
+      consistent ages. Three secondary records agreeing -- but no primary
+      record states the relationship, so this is capped at 75 until a birth
+      or marriage record names it.
+
+# --------------------------------------------------------------------------
+# ID scores — do we know WHO this person was, separately from whether the
+# join to their child is proven? Usually you can leave this empty and let
+# the citation count speak.
+# --------------------------------------------------------------------------
+id: {}
+
+# --------------------------------------------------------------------------
+# Where someone actually LIVED, when a birth/death guess would send a census
+# search to the wrong county. Each entry needs a basis, same as a score.
+# --------------------------------------------------------------------------
+# residences:
+#   "@I4@":
+#     name: Example Grandparent
+#     places:
+#       - year: 1900
+#         place: Logan County, Kansas
+#         basis: 1900 census, confirmed household.

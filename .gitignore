@@ -1,0 +1,48 @@
+# ---------------------------------------------------------------------------
+# YOUR FAMILY DATA — never commit it
+# ---------------------------------------------------------------------------
+# This toolkit is public. Your research is not. Everything below is where
+# your own data lands, and all of it is ignored by default.
+#
+# If you fork this repo to publish your own work, KEEP THESE LINES.
+# A GEDCOM from a living family contains birth dates for living people,
+# including children. Once pushed to a public remote, it is public forever,
+# even if you delete the file in a later commit.
+
+# GEDCOM exports — the raw tree, always contains living people
+exports/
+*.ged
+*.ged.*
+
+# Your scored judgements and research notes
+overrides.yaml
+overrides.yml
+
+# Archived record images and their manifest
+evidence/
+!evidence/.gitkeep
+
+# Your research vault (notes, logs, person files)
+vault/
+vault-mirror/
+my-research/
+
+# Generated reports — regenerate them, don't commit them
+build/
+*.sqlite
+
+# ---------------------------------------------------------------------------
+# Ordinary Python / tooling noise
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+.env
+.DS_Store
