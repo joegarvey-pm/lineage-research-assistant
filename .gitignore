@@ -23,9 +23,17 @@ evidence/
 !evidence/.gitkeep
 
 # Your research vault (notes, logs, person files)
-vault/
-vault-mirror/
-my-research/
+#
+# Anchored to the repo root with a leading slash. Without it, `vault/`
+# also matches `templates/vault/` -- which silently excluded the starter
+# templates from the published repo and broke setup for every new user.
+/vault/
+/vault-mirror/
+/my-research/
+
+# ...but the starter templates must always ship.
+!templates/
+!templates/**
 
 # Generated reports — regenerate them, don't commit them
 build/
